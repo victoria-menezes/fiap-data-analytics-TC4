@@ -164,7 +164,7 @@ features = [
 
 user_df = pd.DataFrame(
     [user_data],
-    columns = features
+    columns = all_columns
 )
 
 
