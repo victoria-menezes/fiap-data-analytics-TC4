@@ -36,10 +36,14 @@ cols_int_unformatted = [
     'TUE'
 ]
 
-cols_categorical = [
-    'gender', 
-    'mtrans'
-]
+cols_categorical = {
+    'gender' : ['male', 'female'], 
+    'mtrans': ['public_transportation',
+               'walking',
+               'automobile',
+               'motorbike',
+               'bike']
+}
 
 cols_ordinal = {
     'caec':['no', 'sometimes', 'frequently', 'always'],
@@ -126,15 +130,20 @@ class ToInt(BaseEstimator, TransformerMixin):
 
 class OneHot(BaseEstimator, TransformerMixin):
     def __init__(self,
-                 to_onehot : list = cols_categorical) -> None:
-        self.to_onehot = to_onehot
+                 to_onehot : dict = cols_categorical) -> None:
+        self.to_onehot : list = list(to_onehot.keys())
+        self.to_onehot_dict = to_onehot
     
     def fit(self, df, y = None):
         return self
     
     def transform(self, df):
         # create encoder
-        enc = OneHotEncoder()
+        enc = OneHotEncoder(
+            categories = [
+                self.to_onehot_dict[col] for col in self.to_onehot_dict
+                ]
+        )
 
         # fit encoder
         enc.fit(df[self.to_onehot])
@@ -160,6 +169,7 @@ class OneHot(BaseEstimator, TransformerMixin):
 
         return df_concat
 
+##
 class ToOrdinal(BaseEstimator, TransformerMixin):
     def __init__(self,
                  ordinal_dict : dict = cols_ordinal) -> None:

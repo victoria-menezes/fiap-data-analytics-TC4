@@ -29,12 +29,6 @@ features = [
     'mtrans_automobile', 'mtrans_bike', 'mtrans_motorbike', 'mtrans_public_transportation', 'mtrans_walking'
 ]
 
-
-df_ML = utils.apply_pipeline_ML(df)
-X = df_ML[features]
-y = df_ML.target
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size = 0.2, stratify = y, random_state=SEED)
-
 model = joblib.load(MODEL_FILE)
 
 ### Website
@@ -134,17 +128,17 @@ user_data = [
     0, # weight
     input_history,
     input_favc,
-    "no", # favc
     0, # fcvc
     0, # ncp
     "no", # caec
-    "no",
+    "no", # smoke
     0, # ch2o
     input_scc, # scc
     input_faf, # faf
     0, # tue
+    "no", # calc
     input_mtrans,
-    0 # target
+    "normal_weight"
 ]
 
 all_columns = [
@@ -160,7 +154,11 @@ features = [
     'caec',
     'scc',
     'faf',
-    'mtrans_automobile', 'mtrans_bike', 'mtrans_motorbike', 'mtrans_public_transportation', 'mtrans_walking'
+    'mtrans_automobile',
+    'mtrans_bike',
+    'mtrans_motorbike',
+    'mtrans_public_transportation',
+    'mtrans_walking'
 ]
 
 user_df = pd.DataFrame(
@@ -170,8 +168,10 @@ user_df = pd.DataFrame(
 
 
 if st.button("Enviar"):
-    user = df_ML[features]
-    user_pred = model.predict(user)
+    user_df = utils.apply_pipeline_ML(user_df)
+    # st.write(user_df.columns)
+    user_df = user_df[features]
+    user_pred = model.predict(user_df)
 
     if user_pred[-1] == 0:
         st.success("### Não foi detectado risco elevado")
