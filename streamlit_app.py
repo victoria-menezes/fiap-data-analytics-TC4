@@ -170,8 +170,7 @@ user_df = pd.DataFrame(
 
 
 if st.button("Enviar"):
-    feature_names = model.feature_names_in
-    user = df_ML[feature_names]
+    user = df_ML[features]
     user_pred = model.predict(user)
 
     if user_pred[-1] == 0:
