@@ -131,6 +131,7 @@ user_data = [
     "Male", # gender
     input_age,
     input_height,
+    0, # weight
     input_history,
     input_favc,
     "no", # favc
