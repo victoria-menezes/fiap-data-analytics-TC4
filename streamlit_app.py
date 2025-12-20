@@ -146,6 +146,11 @@ user_data = [
     0 # target
 ]
 
+all_columns = [
+    'Gender', 'Age', 'Height', 'Weight', 'family_history', 'FAVC', 'FCVC',
+    'NCP', 'CAEC', 'SMOKE', 'CH2O', 'SCC', 'FAF', 'TUE', 'CALC', 'MTRANS',
+    'Obesity']
+
 features = [
     'age',
     'height',
