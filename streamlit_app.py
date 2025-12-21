@@ -7,7 +7,7 @@ import joblib
 from sklearn.model_selection import train_test_split
 
 import os
-
+st.set_page_config(layout="wide")
 SEED = 62532
 
 DATA_FOLDER = os.path.join('data')
