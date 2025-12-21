@@ -7,4 +7,4 @@ Utilizando a base de dados disponibilizada neste desafio em `Obesity.csv`, desen
 
 # Deploy
 ## [Streamlit](https://victoriamenezes-data-analytics-tc4.streamlit.app/)
-## [PowerBI Dashboard]()
+## [PowerBI Dashboard](https://app.powerbi.com/view?r=eyJrIjoiNzk1NDNlMjQtYWRjNC00NzI5LTljZDMtMDJlM2ZhMGExMjQxIiwidCI6IjExZGJiZmUyLTg5YjgtNDU0OS1iZTEwLWNlYzM2NGU1OTU1MSIsImMiOjR9)

@@ -1,5 +1,5 @@
 import pandas as pd
-import streamlit as st 
+import streamlit as st
 import utils
 
 import joblib
@@ -37,11 +37,24 @@ st.title("Análise e previsão de risco de Obesidade")
 def write_header(text):
     st.write(f'### {text}')
 
+
+embed = f'''
+<iframe title="TC4" width="1024" height="612" src="https://app.powerbi.com/view?r=eyJrIjoiMGEzZTE1NzktZTc3Ni00MDRjLWFmMmUtZWRmMTVhMTU2MGE1IiwidCI6IjExZGJiZmUyLTg5YjgtNDU0OS1iZTEwLWNlYzM2NGU1OTU1MSIsImMiOjR9&pageName=5fc763e30871cfb17422" frameborder="0" allowFullScreen="true"></iframe>
+'''
+
+st.write("# Análise")
+st.components.v1.html(
+    embed,
+    width = 1024,
+    height = 612
+)
+
+st.write("# Modelo preditivo")
 write_header("Idade")
-input_age = int(st.slider("Selecione sua idade", 16, 100))
+input_age = int(st.slider("Selecione sua idade", 16, 100, value = 40))
 
 write_header("Altura")
-input_height = float(st.slider("Selecione sua altura", 0.5, 2.5))
+input_height = float(st.slider("Selecione sua altura", 0.5, 2.5, value = 1.7))
 
 # write_header("Peso")
 
